@@ -1,0 +1,21 @@
+services:
+  mongodb:
+    image: mongo:4.4.6
+    command: [--auth]
+    container_name: mongodb
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
+      MONGO_INITDB_DATABASE: product-service
+    ports:
+      - 27018:27017
+    volumes:
+      - /home/rozz/mongodb/database:/data/db
+
+networks:
+  mongo:
+    driver: bridge
+
+volumes:
+  mongo:
